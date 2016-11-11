@@ -1,3 +1,7 @@
+##################################
+# LJ Benson   Email: ljbenson21@gmail.com
+#################################
+
 import requests
 import json
 # I made a JSON string variable so that I could pass in my token and my url to github
