@@ -3,7 +3,7 @@ import json
 import datetime
 
 def code2040stepfive():
-	json_string = '{"token" : "32003a47cded737d82e38ec1fc226905"}'
+	json_string = '{"token" : "32003a47cded737d82e38ec1fc226905"}' 
 	parsed_json = json.loads(json_string)
 	headers = {'content-type': 'application/json'}
 	r = requests.post('http://challenge.code2040.org/api/dating', json = parsed_json, headers = headers)
@@ -28,6 +28,6 @@ def code2040stepfive():
 	print(json_string)
 	r = requests.post('http://challenge.code2040.org/api/dating/validate', data = json.dumps(json_string), headers = headers)
 	print(r.text)
-	
+# numerous print() statements are to make sure that I am getting the correct response after each step
 	
 code2040stepfive()
