@@ -3,30 +3,24 @@ import json
 
 def code2040step3():
 	json_string = '{"token" : "32003a47cded737d82e38ec1fc226905"}'
-	parsed_json = json.loads(json_string)
+	stringThing = json.loads(json_string)
 	headers = {'content-type': 'application/json'}
-	r = requests.post('http://challenge.code2040.org/api/haystack', json = parsed_json, headers = headers)
+	r = requests.post('http://challenge.code2040.org/api/haystack', json = stringThing, headers = headers)
 	print (r.text)
-	parsed_json = json.loads(r.text)
 	
-	list = parsed_json["haystack"]
+	stringThing = json.loads(r.text)# I loaded the text received into stringthing to parse the two objects needle and haystack
+	
+	list = stringThing["haystack"] # first parse
 	i = 0
 	while i < len(list):
-		if parsed_json["needle"] == list[i]:
+		if stringThing["needle"] == list[i]: # second parse; once found, the loop will break and the index will be returned
 			break
 		i += 1
-		
-	json_string = '{"token" : "32003a47cded737d82e38ec1fc226905", "needle" : "'+str(i)+'"}'
-	parsed_json = json.loads(json_string)
-	r = requests.post('http://challenge.code2040.org/api/haystack/validate', json = parsed_json, headers = headers)
+	# "'+str(i)+'" gave me trouble because I did not know how to send the index, I did not know the correct syntax until I looked it up
+	json_string = '{"token" : "32003a47cded737d82e38ec1fc226905", "needle" : "'+str(i)+'"}' 
+	stringThing = json.loads(json_string)
+	r = requests.post('http://challenge.code2040.org/api/haystack/validate', json = stringThing, headers = headers)
 	print(r.text)
-	'''
-def code2040stepthree(token):
-	tok = {"token": token}
-	dictResponse = requests.post("http://challenge.code2040.org/api/haystack", data=json.dumps(tok))
-	index = needleHelper(json.loads(dictResponse.text))
-	result = {"token": token, "needle": index}
-	print(result)
-	'''
+
 	
 code2040step3()
