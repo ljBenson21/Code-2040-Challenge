@@ -15,8 +15,8 @@ def code2040StepTwo():
 		rev = c + rev
 	
 	json_string = '{"token" : "32003a47cded737d82e38ec1fc226905" , "string" : "'+rev+'"}' 
-	parsed_json = json.loads(json_string)
-	r = requests.post('http://challenge.code2040.org/api/reverse/validate', json = parsed_json, headers = headers)
+	stringThing = json.loads(json_string)
+	r = requests.post('http://challenge.code2040.org/api/reverse/validate', json = stringThing, headers = headers)
 	print(r.content)
 
 code2040StepTwo()
