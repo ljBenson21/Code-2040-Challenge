@@ -1,3 +1,7 @@
+##################################
+# LJ Benson   Email: ljbenson21@gmail.com
+#################################
+
 import requests
 import json
 
